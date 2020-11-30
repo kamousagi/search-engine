@@ -17,7 +17,6 @@ namespace Search.Fight.Console
 
         static async Task Main(string[] args)
         {
-            args = new string[] { ".net", "java" };
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             var builder = new ConfigurationBuilder()

@@ -8,6 +8,7 @@ namespace Search.Fight.Infraestructure.Container.Extension
 {
     public static class SearchFightExtension
     {
+
         public static void ConfigureSearchFightServices(this IServiceCollection services)
         {
 
@@ -17,14 +18,13 @@ namespace Search.Fight.Infraestructure.Container.Extension
                 client.BaseAddress = new Uri($"https://www.googleapis.com/customsearch/");
             });
 
-            /*
-            services.AddHttpClient<MsnSeachService>(client =>
+            services.AddHttpClient<ISearchEngine, BingEngine>(client =>
             {
-                //client.BaseAddress = new Uri("https://api.github.com/");
+                client.BaseAddress = new Uri("https://api.bing.microsoft.com/v7.0/");
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "f547cd29f9254e2e9afdf86464da42d5");
                 //client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
                 //client.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
             });
-            */
         }
     }
 }

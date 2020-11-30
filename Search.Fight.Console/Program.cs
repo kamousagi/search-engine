@@ -13,14 +13,16 @@ namespace Search.Fight.Console
 {
     class Program
     {
+        //public static IConfiguration configuration;
+
         static async Task Main(string[] args)
         {
             args = new string[] {".net", "java"};
 
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            // IConfigurationBuilder builder = new ConfigurationBuilder()
+            //     .AddJsonFile("appsettings.json")
+            //     .AddEnvironmentVariables();
+            // Configuration = builder.Build();
 
             IHost host = CreateHostBuilder(args).Build();
             await ExemplifyScoping(host.Services, args);

@@ -21,7 +21,9 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
 
         public async Task<SearchResponse> Search(string searchTerm)
         {
-            var response = await _httpClient.GetAsync($"search?q={Uri.EscapeDataString(searchTerm)}+mkt=en-us&textDecorations=true");
+            string searchTermEscape = Uri.EscapeDataString(searchTerm);
+
+            var response = await _httpClient.GetAsync($"search?q={searchTermEscape}+mkt=en-us&textDecorations=true");
 
             var result = new SearchResponse();
 

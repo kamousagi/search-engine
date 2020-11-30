@@ -10,11 +10,12 @@ namespace Search.Fight.Applicacion.Model
     {
         public string Uri { get; set; }
         public string Key { get; set; }
+        public string Custom { get; set; }
     }
 
     public class BingConfiguration
     {
         public string Uri { get; set; }
-        public string Key { get; set; }
+        public string OcpApimSubscriptionKey { get; set; }
     }
 }

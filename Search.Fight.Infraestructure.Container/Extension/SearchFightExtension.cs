@@ -1,26 +1,30 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Search.Fight.Applicacion.Model;
 using Search.Fight.Application.Service.Implementation;
 using Search.Fight.Application.Service.Implementation.SearchEngine;
 using Search.Fight.Application.Service.Interface;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Search.Fight.Infraestructure.Container.Extension
 {
     public static class SearchFightExtension
     {
 
-        public static void ConfigureSearchFightServices(this IServiceCollection services)
+        public static void ConfigureSearchFightServices(this IServiceCollection services, IConfigurationSection configurationSection)
         {
+            var configuracion = configurationSection.Get<Configuration>();
+
             services.AddScoped<ISearcher, SearchEngineExecute>();
             services.AddHttpClient<ISearchEngine, GoogleSearchEngine>(client =>
             {
-                client.BaseAddress = new Uri($"https://www.googleapis.com/customsearch/");
+                client.BaseAddress = new Uri(configuracion.GoogleConfiguration.Uri);
             });
 
             services.AddHttpClient<ISearchEngine, BingEngine>(client =>
             {
-                client.BaseAddress = new Uri("https://api.bing.microsoft.com/v7.0/");
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "f547cd29f9254e2e9afdf86464da42d5");
+                client.BaseAddress = new Uri(configuracion.BingConfiguration.Uri);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuracion.BingConfiguration.OcpApimSubscriptionKey);
             });
         }
     }

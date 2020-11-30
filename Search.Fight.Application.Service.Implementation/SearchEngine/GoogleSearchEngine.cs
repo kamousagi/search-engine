@@ -5,6 +5,7 @@ using Search.Fight.Application.Service.Interface;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace Search.Fight.Application.Service.Implementation.SearchEngine
 {
@@ -28,10 +29,12 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
 
         public async Task<SearchResponse> Search(string searchTerm)
         {
-            string asdf = _configuracion.GoogleConfiguration.Uri;
-            
-            string key = "AIzaSyA3eWIYlfLzd5Fj9jsZXPwzANzbXeP-WC4";
-            string custom = "b15c974d12e0ac7cd";
+            string key = _configuracion.GoogleConfiguration.Key;
+            string custom = _configuracion.GoogleConfiguration.Custom;
+            string searchTermEscape = Uri.EscapeDataString(searchTerm);
+
+            string uri = $"v1?key={key}&cx={custom}&q={searchTermEscape}";
+
             var response = await _httpClient.GetAsync($"v1?key={key}&cx={custom}&q={searchTerm}");
 
             var result = new SearchResponse();
@@ -53,8 +56,9 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
                 {
                     Success = false
                 };
-                //response.EnsureSuccessStatusCode();
             }
+
+            //response.EnsureSuccessStatusCode();
 
             return result;
         }

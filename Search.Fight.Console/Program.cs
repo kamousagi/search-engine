@@ -13,18 +13,17 @@ namespace Search.Fight.Console
 {
     class Program
     {
-        //public static IConfiguration configuration;
         private static IConfiguration Configuration { get; set; }
-
 
         static async Task Main(string[] args)
         {
             args = new string[] { ".net", "java" };
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.Development.json")
+                .AddJsonFile($"appsettings.{environmentName}.json", true, true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
 
@@ -36,8 +35,9 @@ namespace Search.Fight.Console
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
                 {
-                    services.Configure<Configuration>(Configuration.GetSection("Configuration"));
-                    services.ConfigureSearchFightServices();
+                    var configurationSection = Configuration.GetSection("Configuration");
+                    services.Configure<Configuration>(configurationSection);
+                    services.ConfigureSearchFightServices(configurationSection);
                 });
 
         static async Task ExemplifyScoping(IServiceProvider services, string[] args)

@@ -43,7 +43,6 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
                 {
                     Success = false
                 };
-                //response.EnsureSuccessStatusCode();
             }
 
             return result;

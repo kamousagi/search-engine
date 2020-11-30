@@ -56,8 +56,6 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
                 };
             }
 
-            //response.EnsureSuccessStatusCode();
-
             return result;
         }
 

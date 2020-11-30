@@ -7,10 +7,9 @@ using Search.Fight.Application.Service.Interface;
 
 namespace Search.Fight.Application.Service.Implementation.SearchEngine
 {
-    //https://docs.microsoft.com/en-us/bing/search-apis/bing-web-search/quickstarts/rest/csharp
     public class BingEngine : ISearchEngine
     {
-        public string Name => "MSNSearch";
+        public string Name => "Bing";
 
         private readonly HttpClient _httpClient;
 

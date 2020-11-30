@@ -36,7 +36,7 @@ namespace Search.Fight.Console
                 {
                     var configurationSection = Configuration.GetSection("Configuration");
                     services.Configure<Configuration>(configurationSection);
-                    services.ConfigureSearchFightServices(configurationSection);
+                    services.SearchFightServicesConfigure(configurationSection);
                 });
 
         static async Task ExemplifyScoping(IServiceProvider services, string[] args)

@@ -8,14 +8,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace Search.Fight.Infraestructure.Container.Extension
 {
-    public static class SearchFightExtension
+    public static class SearchFightConfiguration
     {
 
-        public static void ConfigureSearchFightServices(this IServiceCollection services, IConfigurationSection configurationSection)
+        public static void SearchFightServicesConfigure(this IServiceCollection services, IConfigurationSection configurationSection)
         {
             var configuracion = configurationSection.Get<Configuration>();
 
-            services.AddScoped<ISearcher, SearchEngineExecute>();
+            services.AddScoped<ISearcher, Searcher>();
             services.AddHttpClient<ISearchEngine, GoogleSearchEngine>(client =>
             {
                 client.BaseAddress = new Uri(configuracion.GoogleConfiguration.Uri);
@@ -26,6 +26,7 @@ namespace Search.Fight.Infraestructure.Container.Extension
                 client.BaseAddress = new Uri(configuracion.BingConfiguration.Uri);
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuracion.BingConfiguration.OcpApimSubscriptionKey);
             });
+
         }
     }
 }

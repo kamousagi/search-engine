@@ -9,8 +9,6 @@ using System;
 
 namespace Search.Fight.Application.Service.Implementation.SearchEngine
 {
-    //https://developers.google.com/custom-search/v1/using_rest
-    //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1
     public class GoogleSearchEngine : ISearchEngine
     {
         private readonly HttpClient _httpClient;

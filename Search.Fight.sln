@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Fight.Applicacion.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Fight.Application.Service.Implementation", "Search.Fight.Application.Service.Implementation\Search.Fight.Application.Service.Implementation.csproj", "{1D82AE4F-4C9C-4004-A0AC-8D899814B32C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Fight.Infraestructure", "Search.Fight.Infraestructure\Search.Fight.Infraestructure.csproj", "{62E7F6A9-28D3-40DD-A549-86B8ED9B4BFE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Fight.Infraestructure.Container", "Search.Fight.Infraestructure.Container\Search.Fight.Infraestructure.Container.csproj", "{EBF33918-0312-4D62-BDE7-2460854945EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Fight.Test", "Search.Fight.Test\Search.Fight.Test.csproj", "{C778F82D-75B3-4CF2-B553-269643C97389}"
@@ -35,10 +33,6 @@ Global
 		{1D82AE4F-4C9C-4004-A0AC-8D899814B32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D82AE4F-4C9C-4004-A0AC-8D899814B32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D82AE4F-4C9C-4004-A0AC-8D899814B32C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62E7F6A9-28D3-40DD-A549-86B8ED9B4BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62E7F6A9-28D3-40DD-A549-86B8ED9B4BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62E7F6A9-28D3-40DD-A549-86B8ED9B4BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62E7F6A9-28D3-40DD-A549-86B8ED9B4BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBF33918-0312-4D62-BDE7-2460854945EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBF33918-0312-4D62-BDE7-2460854945EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBF33918-0312-4D62-BDE7-2460854945EF}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Search.Fight.Application.Service.Implementation
 {
-    public class SearchEngineExecute : ISearcher
+    public class Searcher : ISearcher
     {
         private readonly IEnumerable<ISearchEngine> _searchEngines;
-        public SearchEngineExecute(IEnumerable<ISearchEngine> searchEngines)
+        public Searcher(IEnumerable<ISearchEngine> searchEngines)
         {
             _searchEngines = searchEngines;
         }

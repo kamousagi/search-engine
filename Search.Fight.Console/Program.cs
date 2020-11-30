@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Search.Fight.Applicacion.Model;
 using Search.Fight.Application.Service.Implementation;
+using Search.Fight.Application.Service.Interface;
 using Search.Fight.Infraestructure.Container.Extension;
 using System;
 using System.Collections.Generic;
@@ -13,25 +15,28 @@ namespace Search.Fight.Console
     {
         static async Task Main(string[] args)
         {
+            args = new string[] {".net", "java"};
+
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+
             IHost host = CreateHostBuilder(args).Build();
             await ExemplifyScoping(host.Services, args);
-
-            System.Console.ReadLine();
         }
 
-        //IHostBuilder -> Microsoft.Extensions.Hosting.Abstraction
-        //Host -> Microsoft.Extensions.Hosting
         static IHostBuilder CreateHostBuilder(string[] args) =>
-          Host.CreateDefaultBuilder(args)
-              .ConfigureServices((_, services) =>
-                  services.ConfigureSearchFightServices());
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices((_, services) =>
+                    services.ConfigureSearchFightServices());
 
         static async Task ExemplifyScoping(IServiceProvider services, string[] args)
         {
             using IServiceScope serviceScope = services.CreateScope();
             IServiceProvider serviceProvider = serviceScope.ServiceProvider;
 
-            SearchEngineExecute searchService = serviceProvider.GetRequiredService<SearchEngineExecute>();
+            ISearchEngineExecute searchService = serviceProvider.GetRequiredService<ISearchEngineExecute>();
             List<SearchResult> result = await searchService.Search(args);
 
             foreach (var item in result)

@@ -22,20 +22,32 @@ namespace Search.Fight.Application.Service.Implementation.SearchEngine
         {
             string key = "AIzaSyA3eWIYlfLzd5Fj9jsZXPwzANzbXeP-WC4";
             string custom = "b15c974d12e0ac7cd";
-            var response = await _httpClient.GetAsync($"v1?key={key}&cx={custom}&q={searchTerm}");
+            var response = await _httpClient.GetAsync($"XXXv1?key={key}&cx={custom}&q={searchTerm}");
 
-            response.EnsureSuccessStatusCode();
+            var result = new SearchResponse();
 
-            var content = await response.Content.ReadAsStringAsync();
-            var tasks = JsonConvert.DeserializeObject<GoogleResponse>(content);
-
-            var result = new SearchResponse
+            if (response.IsSuccessStatusCode)
             {
-                Success = true,
-                TotalResults = tasks.searchInformation.totalResults
-            };
+                var content = await response.Content.ReadAsStringAsync();
+                var tasks = JsonConvert.DeserializeObject<GoogleResponse>(content);
+
+                result = new SearchResponse
+                {
+                    Success = true,
+                    TotalResults = tasks.searchInformation.totalResults
+                };
+            }
+            else
+            {
+                result = new SearchResponse{
+                    Success = false
+                };
+                //response.EnsureSuccessStatusCode();
+            }
 
             return result;
         }
+
     }
+
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Search.Fight.Console": {
+      "commandName": "Project",
+      "commandLineArgs": ".net java \"hola mundo\" \"starcraft2\""
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Search.Fight.Applicacion.Model\Search.Fight.Applicacion.Model.csproj" />
+    <ProjectReference Include="..\Search.Fight.Application.Service.Interface\Search.Fight.Application.Service.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -13,7 +13,6 @@ namespace Search.Fight.Console
     {
         static async Task Main(string[] args)
         {
-            //System.Console.WriteLine("Hello World!");
             IHost host = CreateHostBuilder(args).Build();
             await ExemplifyScoping(host.Services, args);
 
@@ -35,7 +34,6 @@ namespace Search.Fight.Console
             SearchEngineExecute searchService = serviceProvider.GetRequiredService<SearchEngineExecute>();
             List<SearchResult> result = await searchService.Search(args);
 
-            //print
             foreach (var item in result)
             {
                 System.Console.WriteLine($"{item.SearchTerm}: {item.SeachEngine}: {item.TotalResults}");

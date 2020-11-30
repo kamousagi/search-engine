@@ -7,13 +7,13 @@ using Search.Fight.Application.Service.Interface;
 
 namespace Search.Fight.Application.Service.Implementation.SearchEngine
 {
-    public class BingEngine : ISearchEngine
+    public class BingSearchEngine : ISearchEngine
     {
         public string Name => "Bing";
 
         private readonly HttpClient _httpClient;
 
-        public BingEngine(HttpClient httpClient)
+        public BingSearchEngine(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

@@ -16,12 +16,10 @@ namespace Search.Fight.Infraestructure.Container.Extension
             var configuracion = configurationSection.Get<Configuration>();
 
             services.AddScoped<ISearcher, Searcher>();
-            services.AddHttpClient<ISearchEngine, GoogleSearchEngine>(client =>
-            {
-                client.BaseAddress = new Uri(configuracion.GoogleConfiguration.Uri);
-            });
 
-            services.AddHttpClient<ISearchEngine, BingEngine>(client =>
+            services.AddHttpClient<ISearchEngine, GoogleSearchEngine>(client => client.BaseAddress = new Uri(configuracion.GoogleConfiguration.Uri));
+
+            services.AddHttpClient<ISearchEngine, BingSearchEngine>(client =>
             {
                 client.BaseAddress = new Uri(configuracion.BingConfiguration.Uri);
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuracion.BingConfiguration.OcpApimSubscriptionKey);

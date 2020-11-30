@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Search.Fight.Application.Service.Implementation
 {
-    public class SearchEngineExecute : ISearchEngineExecute
+    public class SearchEngineExecute : ISearcher
     {
         private readonly IEnumerable<ISearchEngine> _searchEngines;
         public SearchEngineExecute(IEnumerable<ISearchEngine> searchEngines)

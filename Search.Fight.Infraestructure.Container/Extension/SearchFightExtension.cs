@@ -11,8 +11,7 @@ namespace Search.Fight.Infraestructure.Container.Extension
 
         public static void ConfigureSearchFightServices(this IServiceCollection services)
         {
-
-            services.AddScoped<ISearchEngineExecute, SearchEngineExecute>();
+            services.AddScoped<ISearcher, SearchEngineExecute>();
             services.AddHttpClient<ISearchEngine, GoogleSearchEngine>(client =>
             {
                 client.BaseAddress = new Uri($"https://www.googleapis.com/customsearch/");
@@ -22,8 +21,6 @@ namespace Search.Fight.Infraestructure.Container.Extension
             {
                 client.BaseAddress = new Uri("https://api.bing.microsoft.com/v7.0/");
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "f547cd29f9254e2e9afdf86464da42d5");
-                //client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
-                //client.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
             });
         }
     }

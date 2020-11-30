@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Search.Fight.Application.Service.Interface
 {
-    public interface ISearchEngineExecute
+    public interface ISearcher
     {
         Task<List<SearchResult>> Search(string[] searchTerms);
     }
